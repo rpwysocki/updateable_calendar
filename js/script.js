@@ -21,9 +21,9 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
 
-  $('#btn saveBtn col-2 col-md-1').click(function() {
+  $('#btn saveBtn col-2 col-md-1').click(function () {
 
-    
+
     console.log('Save button clicked!');
   });
 
@@ -42,7 +42,7 @@ $(function () {
   var currentHour = dayjs().hour();
 
   // Loop through each time block
-  $('.time-block').each(function() {
+  $('.time-block').each(function () {
     var blockHour = parseInt($(this).attr('id'));
 
     // Compare the block hour with the current hour
