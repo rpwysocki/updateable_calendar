@@ -6,7 +6,7 @@ $(function () {
 
 
   var date = document.querySelector('#currentDay');
-  var currentDate = dayjs().format('MMM D, YYYY');
+  var currentDate = dayjs().format('MMMM D, YYYY');
   date.innerText = currentDate;
 
   var buttons = $(".saveBtn");
