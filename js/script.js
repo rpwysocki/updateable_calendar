@@ -9,8 +9,8 @@ $(function () {
   var currentDate = dayjs().format('MMMM D, YYYY');
   date.innerText = currentDate;
 
-  var buttons = $(".saveBtn");
-  var timeBlock = $(".time-block");
+  var buttons = document.querySelectorAll("btn saveBtn col-2 col-md-1");
+
 
 
 
@@ -21,18 +21,14 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
 
-  $('#btn saveBtn col-2 col-md-1').click(function () {
-
+  buttons.forEach(function (button) {
+    buttons.addEventListener('click', handleClick);
 
     console.log('Save button clicked!');
+
   });
 
 
-
-
-
-
-  //
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
@@ -40,6 +36,7 @@ $(function () {
   // current hour in 24-hour time?
 
   var currentHour = dayjs().hour();
+  var timeBlock = $(".time-block");
 
   // Loop through each time block
   $('.time-block').each(function () {
@@ -66,6 +63,37 @@ $(function () {
   // attribute of each time-block be used to do this?
 
 
+  // Save inputs to localStorage
+  localStorage.setItem('userInputs', JSON.stringify(inputs));
+
+  // Retrieve user inputs from localStorage
+  var savedInputs = localStorage.getItem('userInputs');
+
+  if (savedInputs) {
+    var inputs = JSON.parse(savedInputs);
+
+    // Set textarea values
+    Object.keys(inputs).forEach((key) => {
+      var textarea = document.getElementById(key);
+      if (textarea) {
+        textarea.value = inputs[key];
+      }
+    });
+  }
+
+  //Saving user inputs to localStorage
+  var saveInputs = () => {
+    var textareaElements = document.querySelectorAll('.time-block textarea');
+    var inputs = {};
+
+    // Get textarea values
+    textareaElements.forEach((textarea) => {
+      var timeBlockId = textarea.closest('.time-block').id;
+      inputs[timeBlockId] = textarea.value;
+    });
+
+
+  };
 
 
   //
