@@ -9,7 +9,7 @@ $(function () {
   var currentDate = dayjs().format('MMMM D, YYYY');
   date.innerText = currentDate;
 
-  var buttons = document.querySelectorAll("btn saveBtn col-2 col-md-1");
+  var buttons = document.querySelectorAll(button);
 
 
 
@@ -40,7 +40,7 @@ $(function () {
 
   // Loop through each time block
   $('.time-block').each(function () {
-    var blockHour = parseInt($(this).attr('id'));
+    var blockHour = parseInt($(this).attr('.time-block'));
 
     // Compare the block hour with the current hour
     if (blockHour < currentHour) {
